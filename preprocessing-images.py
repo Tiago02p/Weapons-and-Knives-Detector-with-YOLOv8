@@ -37,7 +37,6 @@ def process_images_in_folder(input_folder, output_folder):
         cv2.imwrite(output_path, original, [int(cv2.IMWRITE_JPEG_QUALITY), 20])
         print(f"Detalhe horizontal da transformada wavelet salvo em {output_path}")
 
-#input_folder = "./assets/Tes"
-input_folder = "./imgs/Normal/Test/images"
-output_folder = "./imgs/Haar_Compressed/Test/images"
+input_folder = "./imgs/input"
+output_folder = "./imgs/output"
 process_images_in_folder(input_folder, output_folder)
