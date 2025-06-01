@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 1
+names: ['AK-47 Gun']
+
+roboflow:
+  workspace: yolo-1utwo
+  project: ak47-detection
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/yolo-1utwo/ak47-detection/dataset/1
