@@ -14,6 +14,12 @@ The main objective of this project is to design and implement an advanced system
 
 - **Integration with IP Cameras:** The system is designed for easy integration with IP cameras, allowing for real-time surveillance and immediate notifications.
 
+- **Real-time Webcam Detection:** The system includes real-time weapon detection using your computer's webcam, featuring:
+  - Live object tracking with BoTSORT
+  - FPS monitoring
+  - Real-time visualization
+  - Efficient CPU usage
+  - Error handling and stability improvements
 
 ## Dataset
 
@@ -35,10 +41,22 @@ pip install -r requirements.txt
 
 3. **System Execution:**
 
+For image detection:
 ```
 python detecting-images.py
 ```
 
+For real-time webcam detection:
+```
+python real_time_detection.py
+```
+
+The real-time detection system will:
+- Open your webcam
+- Start detecting weapons in real-time
+- Track detected objects between frames
+- Display FPS counter
+- Press 'q' to quit the program
 
 ## Contributions and Problems
 
