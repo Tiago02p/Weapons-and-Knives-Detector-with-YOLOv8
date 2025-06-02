@@ -1,5 +1,0 @@
-names:
-  0: AK-47
-path: ./dataset
-train: images/train
-val: images/val

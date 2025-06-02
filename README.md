@@ -1,99 +1,53 @@
-# Weapons-and-Knives Detector with YOLOv8
+# Weapon and Knievs Detection System
 
-## Objectives
-- Implement object detection using YOLOv8
-- Create a real-time detection system
-- Fine-tune a model for a custom dataset
-- Evaluate detection performance (precision, recall, mAP)
+This repository contains the source code and resources related to the academic weapon detection project, developed as part of research in the area of ​​computer security.
 
-## Tasks & Progress
-1. **Set up YOLOv8 for real-time object detection from webcam**  
-   - Implemented in `real_time_detection.py` (see below for usage)
-2. **Create a custom dataset with annotated images (10-20 images per class)**  
-   - Dataset structure established, using Roboflow export for AK-47 class
-   - Images and labels organized in YOLO format under `datasets/dataset/`
-3. **Fine-tune a pre-trained YOLO model on your custom dataset**  
-   - Training script: `train_model.py` (see below for usage)
-   - Model: `yolov8n.pt` (pretrained, fine-tuned on custom data)
-4. **Implement tracking for detected objects across video frames**  
-   - Tracking logic included in `real_time_detection.py`
-5. **Evaluate the model using precision, recall, and mAP metrics**  
-   - Metrics calculation and display in real-time detection script
+## Overview
 
----
+The main objective of this project is to design and implement an advanced system for the autonomous detection of firearms and knives. Using the YOLOv8 (You Only Look Once) framework and transfer learning techniques, we seek to improve security effectiveness through continuous, real-time surveillance.
 
-## Installation
+## Key Features
 
-1. **Clone the repository**
-2. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-   - Key dependencies: `ultralytics`, `opencv-contrib-python`, `numpy`, `matplotlib`, `pyyaml`
-3. **Download or prepare your dataset**
-   - Place your dataset in `datasets/dataset/` following this structure:
-     ```
-     datasets/
-       dataset/
-         images/
-           train/
-           val/
-         labels/
-           train/
-           val/
-         data.yaml
-     ```
-   - Example `data.yaml`:
-     ```yaml
-     path: .
-     train: images/train
-     val: images/val
-     names:
-       0: AK-47
-     ```
+- **YOLOv8 Framework:** One implementation uses YOLOv8, known for its efficiency in real-time object detection.
+  
+- **Transfer Learning:** Transfer learning techniques are employed to adapt the model to a specific context and improve accuracy in weapon detection.
 
----
+- **Integration with IP Cameras:** The system is designed for easy integration with IP cameras, allowing for real-time surveillance and immediate notifications.
 
-## Usage
 
-### 1. Train the Model
-```bash
-python train_model.py
+## Dataset
+
+https://universe.roboflow.com/joao-assalim-xmovq/weapon-2/dataset/2
+
+## How to use
+
+1. **Repository Cloning:**
+
 ```
-- This will fine-tune YOLOv8 on your custom dataset.
-- Make sure your dataset is in the correct structure (see above).
-
-### 2. Real-Time Detection from Webcam
-```bash
-python real_time_detection.py
+git clone https://github.com/JoaoAssalim/Weapons-and-Knives-Detector-with-YOLOv8.git
 ```
-- Detects AK-47 in real-time using your webcam.
-- Displays bounding boxes, tracking, and live metrics (precision, recall, mAP).
 
----
+2. **Installation of dependencies:**
 
-## Description of Approach
-- **Dataset**: Used Roboflow-exported dataset for AK-47 detection, organized in YOLO format. The system is extensible to more classes (e.g., knives) by adding images and updating `data.yaml`.
-- **Training**: Fine-tuned a YOLOv8 nano model (`yolov8n.pt`) using the provided dataset. Training is handled by `train_model.py`, which also generates the correct `data.yaml`.
-- **Detection & Tracking**: Real-time detection and object tracking are implemented in `real_time_detection.py` using OpenCV. The script draws bounding boxes, tracks objects across frames, and displays live performance metrics.
-- **Evaluation**: Precision, recall, and mAP are calculated and shown during real-time detection.
+```
+pip install -r requirements.txt
+```
 
----
+3. **System Execution:**
 
-## Challenges Overcome
-- **Dataset Path Issues**: YOLOv8 expects a specific directory structure. Ensured the dataset is placed in `datasets/dataset/` and `data.yaml` uses `path: .` for correct relative paths.
-- **Validation Set**: Created a script to populate the validation set from training images when missing.
-- **Module Import Errors**: Resolved issues with Python environment and package installation to ensure `ultralytics` is available.
-- **Windows Path Handling**: Adjusted scripts and documentation to work with Windows file paths and PowerShell.
-- **Training Script Robustness**: Updated `train_model.py` to use absolute or correct relative paths, and to skip unnecessary dataset preparation steps if the dataset is already structured.
+```
+python detecting-images.py
+```
 
----
 
-## Next Steps
-- Expand dataset to include more weapon classes (e.g., knives)
-- Further tune hyperparameters for improved accuracy
-- Integrate additional evaluation and visualization tools
+## Contributions and Problems
 
----
+Contributions are welcome! If you encounter issues or have suggestions for improvement, please open an issue in this repository.
 
-For any issues or questions, please refer to the code comments or open an issue in the repository.
+## Academic Notes
+
+This project is part of academic research in the area of ​​computer security. The results obtained and performance analyzes are documented in detail in the scientific article that will be made available in the future.
+
+## License
+
+This project is distributed under the [MIT] license (LICENSE.md). See the LICENSE.md file for details.
