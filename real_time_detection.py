@@ -7,7 +7,7 @@ def real_time_detection():
     try:
         # Initialize YOLO model
         print("Loading YOLO model...")
-        model = YOLO('./runs/detect/Normal_Compressed/weights/best.pt')
+        model = YOLO('./runs/detect/ak47_detection5/weights/best.pt')
         
         # Initialize webcam
         print("Initializing webcam...")
