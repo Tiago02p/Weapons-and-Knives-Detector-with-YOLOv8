@@ -1,71 +1,199 @@
-# Weapon and Knievs Detection System
+# AK-47 Detection with YOLOv8
 
-This repository contains the source code and resources related to the academic weapon detection project, developed as part of research in the area of ​​computer security.
+Este projeto implementa um sistema de detecção de armas AK-47 usando YOLOv8, uma das mais recentes e eficientes arquiteturas de detecção de objetos. O sistema pode ser usado tanto para detecção em tempo real via webcam quanto para análise de imagens estáticas.
 
-## Overview
+## 📋 Características
 
-The main objective of this project is to design and implement an advanced system for the autonomous detection of firearms and knives. Using the YOLOv8 (You Only Look Once) framework and transfer learning techniques, we seek to improve security effectiveness through continuous, real-time surveillance.
+- Detecção de AK-47 em tempo real via webcam
+- Análise de imagens estáticas
+- Avaliação detalhada do modelo
+- Métricas de performance (mAP, precisão, recall)
+- Visualizações e gráficos de resultados
+- Suporte para múltiplos formatos de imagem
 
-## Key Features
+## 🔄 Processo de Desenvolvimento
 
-- **YOLOv8 Framework:** One implementation uses YOLOv8, known for its efficiency in real-time object detection.
-  
-- **Transfer Learning:** Transfer learning techniques are employed to adapt the model to a specific context and improve accuracy in weapon detection.
+### 1. Coleta e Preparação dos Dados
+- Criação de um dataset específico para AK-47
+- Anotação manual das imagens para treinamento
+- Divisão do dataset em conjuntos de treino e validação
+- Pré-processamento das imagens para melhor performance
 
-- **Integration with IP Cameras:** The system is designed for easy integration with IP cameras, allowing for real-time surveillance and immediate notifications.
+### 2. Treinamento do Modelo
+- Utilização do YOLOv8 como base
+- Fine-tuning com o dataset personalizado
+- Ajuste de hiperparâmetros para otimização
+- Múltiplas iterações de treinamento para melhorar a acurácia
 
-- **Real-time Webcam Detection:** The system includes real-time weapon detection using your computer's webcam, featuring:
-  - Live object tracking with BoTSORT
-  - FPS monitoring
-  - Real-time visualization
-  - Efficient CPU usage
-  - Error handling and stability improvements
+### 3. Desenvolvimento do Sistema
+- Implementação da detecção em tempo real
+- Criação de scripts de avaliação
+- Desenvolvimento de visualizações e métricas
+- Otimização para performance em CPU
 
-## Dataset
+### 🎯 Desafios Enfrentados
 
-https://universe.roboflow.com/joao-assalim-xmovq/weapon-2/dataset/2
+1. **Dataset e Anotação**
+   - Dificuldade em obter imagens variadas de AK-47
+   - Processo demorado de anotação manual
+   - Necessidade de balancear o dataset
 
-## How to use
+2. **Treinamento**
+   - Ajuste fino dos hiperparâmetros
+   - Otimização do tempo de treinamento
+   - Balanceamento entre acurácia e velocidade
 
-1. **Repository Cloning:**
+3. **Implementação**
+   - Otimização para CPU (sem GPU)
+   - Ajuste do sistema de tracking em tempo real
+   - Melhoria da performance em diferentes condições de iluminação
 
+4. **Avaliação**
+   - Desenvolvimento de métricas significativas
+   - Criação de visualizações úteis
+   - Testes em diferentes cenários
+
+### 💡 Soluções Implementadas
+
+1. **Para o Dataset**
+   - Uso de técnicas de data augmentation
+   - Criação de um pipeline de pré-processamento
+   - Implementação de validação cruzada
+
+2. **Para o Treinamento**
+   - Implementação de early stopping
+   - Uso de learning rate scheduling
+   - Otimização de batch size
+
+3. **Para a Performance**
+   - Implementação de multi-threading
+   - Otimização do processamento de imagens
+   - Ajuste do sistema de tracking
+
+4. **Para a Avaliação**
+   - Desenvolvimento de scripts automatizados
+   - Criação de visualizações interativas
+   - Implementação de métricas detalhadas
+
+## 🚀 Instalação
+
+1. Clone o repositório:
+```bash
+git clone [URL_DO_REPOSITÓRIO]
+cd Weapons-and-Knives-Detector-with-YOLOv8
 ```
-git clone https://github.com/JoaoAssalim/Weapons-and-Knives-Detector-with-YOLOv8.git
-```
 
-2. **Installation of dependencies:**
-
-```
+2. Instale as dependências:
+```bash
 pip install -r requirements.txt
 ```
 
-3. **System Execution:**
+## 📦 Estrutura do Projeto
 
-For image detection:
 ```
-python detecting-images.py
+├── custom_dataset/           # Dataset de treinamento
+│   ├── images/              # Imagens do dataset
+│   └── labels/              # Anotações do dataset
+├── evaluation_results/      # Resultados das avaliações
+├── imgs/                    # Imagens para teste
+├── runs/                    # Resultados do treinamento
+├── models/                  # Modelos salvos
+├── real_time_detection.py   # Detecção em tempo real
+├── evaluate_model.py        # Avaliação do modelo
+├── evaluate_custom_images.py # Avaliação em imagens personalizadas
+└── requirements.txt         # Dependências do projeto
 ```
 
-For real-time webcam detection:
-```
+## 🎯 Uso
+
+### 1. Detecção em Tempo Real
+
+Para iniciar a detecção em tempo real usando sua webcam:
+
+```bash
 python real_time_detection.py
 ```
 
-The real-time detection system will:
-- Open your webcam
-- Start detecting weapons in real-time
-- Track detected objects between frames
-- Display FPS counter
-- Press 'q' to quit the program
+- Pressione 'q' para sair
+- O sistema mostrará as detecções em tempo real
+- FPS será exibido no canto superior esquerdo
 
-## Contributions and Problems
+### 2. Avaliação do Modelo
 
-Contributions are welcome! If you encounter issues or have suggestions for improvement, please open an issue in this repository.
+Para avaliar o desempenho geral do modelo:
 
-## Academic Notes
+```bash
+python evaluate_model.py
+```
 
-This project is part of academic research in the area of ​​computer security. The results obtained and performance analyzes are documented in detail in the scientific article that will be made available in the future.
+Isso irá gerar:
+- Métricas detalhadas (mAP, precisão, recall)
+- Matriz de confusão
+- Gráficos de performance
+- Resultados salvos em `evaluation_results/`
 
-## License
+### 3. Avaliação em Imagens Personalizadas
 
-This project is distributed under the [MIT] license (LICENSE.md). See the LICENSE.md file for details.
+Para testar o modelo em um conjunto específico de imagens:
+
+1. Coloque suas imagens na pasta `imgs/input/`
+2. Execute:
+```bash
+python evaluate_custom_images.py
+```
+
+Resultados serão salvos em `evaluation_results/custom_images/`:
+- Imagens anotadas com detecções
+- CSV com resultados detalhados
+- Gráficos de resumo
+- Estatísticas de detecção
+
+## 📊 Métricas de Performance
+
+O modelo atual apresenta excelente performance:
+- mAP50: 99.5%
+- mAP50-95: 96.1%
+- Precisão: 100%
+- Recall: 100%
+
+## 🔧 Configuração
+
+### Ajustando o Limiar de Confiança
+
+O limiar de confiança padrão é 0.5 (50%). Para ajustar:
+
+1. Em `real_time_detection.py`:
+```python
+results = model.track(frame, persist=True, tracker="botsort.yaml", conf=0.5)  # Ajuste o valor 0.5
+```
+
+2. Em `evaluate_custom_images.py`:
+```python
+results = model(img, conf=0.5)  # Ajuste o valor 0.5
+```
+
+### Formatos de Imagem Suportados
+
+- JPG/JPEG
+- PNG
+- BMP
+
+## 📝 Notas
+
+- O modelo foi treinado especificamente para detecção de AK-47
+- Performance pode variar dependendo das condições de iluminação e ângulo
+- Recomenda-se boa iluminação para melhores resultados
+
+## 🤝 Contribuindo
+
+Contribuições são bem-vindas! Por favor, sinta-se à vontade para submeter pull requests.
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+
+## 🙏 Créditos
+
+- YOLOv8 por Ultralytics
+- Dataset de treinamento personalizado
+- Comunidade open source
